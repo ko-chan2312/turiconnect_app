@@ -1,0 +1,6 @@
+<%= form_for(@post) do |f| %>
+  <%= f.text_field :fish, placeholder: "釣れた魚を入力" %>
+ 　<%= f.text_field :place, placeholder: "釣り場を入力" %>
+ 　<%= f.text_area :content, placeholder: "コメントを入力" %>
+ 　<%= f.submit "投稿",  class: "btn btn-primary" %>
+<% end %>

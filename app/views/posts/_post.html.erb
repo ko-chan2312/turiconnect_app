@@ -1,0 +1,11 @@
+<li id="post-<%= post.id %>">
+    <span class="user"><%= link_to post.user.name, post.user %></span>
+    <span class="fish"><%= post.fish%></span>
+    <span class="place"><%= post.place%></span>
+    <span class="content"><%= post.content%></span>
+    <span class="delete">
+        <%= link_to "削除", post, method: :delete,
+                                       data: { confirm: "本当に削除しますか？" } %>
+
+    </span>
+</li>
