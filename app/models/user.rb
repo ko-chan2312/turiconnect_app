@@ -12,10 +12,15 @@ class User < ApplicationRecord
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :favorite_relationships, dependent: :destroy
+  has_many :likes, through: :favorite_relationships, source: :post
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :comments
-  
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
@@ -34,6 +39,19 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def like(post)
+    likes << post
+  end
+
+  def unlike(post)
+    favorite_relationships.find_by(post_id: post.id).destroy
+  end
+
+  def likes?(post)
+    likes.include?(post)
+  end
+
   
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
@@ -50,6 +68,18 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'relationship'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'relationship'
+      )
+      notification.save if notification.valid?
+    end
   end
 
 end

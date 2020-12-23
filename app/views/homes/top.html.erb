@@ -1,25 +1,26 @@
 <% if signed_in? %>
- <div class="row">
- 　　<section class="stats">
+<div class="row">
+    <section class="stats">
         <%= render 'shared/stats' %>
-      </section>
- 　　<section class="post_form">
-        <%= render 'shared/post_form' %>
     </section>
-  　<div class="col-md-8">
-    <div class="row">
-      <div class="col-md-4">
-        <h3>自分の投稿</h3>
-      </div>
-      <div class="search_form">
+    <section class="post_form">
+        <%= render 'shared/post_form' %>
         <%= render 'shared/posts_search_form' %>
-      </div>
+    </section>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>自分の投稿</h3>
+            </div>
+        </div>
+        <%= render 'shared/feed' %>
     </div>
-    <%= render 'shared/feed' %>
-  </div>
-　</div>
+</div>
 <% else %>
- <h1>釣りコネクトへようこそ</h1>
- <h2>釣りコネクトとは</h2>
- <p>釣果を投稿したり見たりして釣人同士が繋がるサイトです</p>
+<h1>釣りコネクトへようこそ</h1>
+<h2>釣りコネクトとは</h2>
+<p>
+    <img src="https://pakutaso.cdn.rabify.me/shared/img/thumb/PP_hutou.jpg?d=350" width="60%" height="600px">
+</p>
+<p>釣果を投稿したり見たりして釣人同士が繋がるサイトです</p>
 <% end %>

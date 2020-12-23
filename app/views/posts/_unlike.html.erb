@@ -1,0 +1,7 @@
+<%= form_for(current_user.favorite_relationships.find_by(post_id: post.id),
+             html: { method: :delete }) do |f| %>
+<%= button_tag( class: "btn btn-default") do %>
+<i class="far fa-heart"></i>
+<%= content_tag :span, post.liked_by.count %>
+<% end %>
+<% end %>

@@ -14,27 +14,30 @@ class PostsController < ApplicationController
 
  def create
   @post = current_user.posts.build(post_params)
+  @post.image.attach(params[:post][:image])
   if @post.save
-    flash[:success] = "投稿を作成しました"
+    flash[:primary] = "投稿を作成しました"
     redirect_to root_url 
   else
     @q = Post.none.ransack
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @feed_items = current_user.feed.page(page: params[:page])
     render 'homes/top'  
   end
  end
 
  def destroy
     @post.destroy 
-    flash[:success] = "投稿を削除しました"
+    flash[:primary] = "投稿を削除しました"
     redirect_to request.referrer || root_url
  end
 
 
  private
    def post_params
-     params.require(:post).permit(:fish, :place, :content)
+     params.require(:post).permit(:fish, :place, :content, :image)
    end
+
+   
 
    def correct_user
      @post = current_user.posts.find_by(id: params[:id])

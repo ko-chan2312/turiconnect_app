@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ *= require_self
+ */
+
+ @import "bootstrap";
+
+
+ /* header */
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #333399;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+  }
+
+
+
+  
+
+  /* body */
+  html{
+    height:2000px;
+}
+
+  h1,h2,p{
+    text-align: center;
+}
+
+.container{
+  text-align: center;
+}
+
+  .row ,h1,h2{
+    font-family: "serif";
+  }
+
+  .post_form{
+      margin:100px;
+      padding:50px 200px;
+      background-color:#EEEEEE;
+      border-radius: 10px;
+  }
+
+  .posts{
+    
+    li{
+        background-color:#EEEEEE;
+        margin:10px;
+        border-radius: 10px;
+    }
+  }
+
+  li{
+      padding: 10px;
+      list-style: none;
+  }
+
+
+   /* footer */
+   footer p{
+       float:right;
+   }
+
+   /* likes */
+
+   .unlike-btn{
+    color: #e54747;
+   }
+  

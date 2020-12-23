@@ -1,6 +1,24 @@
 <%= form_for(@post) do |f| %>
-  <%= f.text_field :fish, placeholder: "釣れた魚を入力" %>
- 　<%= f.text_field :place, placeholder: "釣り場を入力" %>
- 　<%= f.text_area :content, placeholder: "コメントを入力" %>
- 　<%= f.submit "投稿",  class: "btn btn-primary" %>
+<%= render 'shared/error_messages', object: f.object %>
+<h3>投稿する</h3>
+<br>魚種
+<br><%= f.text_field :fish, placeholder: "釣れた魚を入力" %>
+<br>釣り場
+<br><%= f.text_field :place, placeholder: "釣り場を入力" %>
+<br>コメント
+<br><%= f.text_area :content, placeholder: "コメントを入力" %>
+<br><%= f.submit "投稿",  class: "btn btn-primary" %>
+<span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+</span>
 <% end %>
+
+<script type="text/javascript">
+    $("#post_image").bind("change", function() {
+        var size_in_megabytes = this.files[0].size / 1024 / 1024;
+        if (size_in_megabytes > 5) {
+            alert("Maximum file size is 5MB. Please choose a smaller file.");
+            $("#post_image").val("");
+        }
+    });
+</script>

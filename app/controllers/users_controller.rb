@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :following, :followers, :likes]
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page]).per(5)
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -24,19 +24,26 @@ class UsersController < ApplicationController
   end
 
   def following
-   @title = "Following"
+   @title = "フォロー"
    @user = User.find(params[:id])
-   @users = @user.following.paginate(page: params[:page])
+   @users = @user.following.page(params[:page]).per(10)
    render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = "フォロワー"
     @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.page(params[:page]).per(10)
     render 'show_follow'
    end
 
+   def likes
+    @title = "いいね"
+    @user  = User.find(params[:id])
+    @posts = @user.likes.page(params[:page])
+    render 'show_like'
+   end
+  
   
 
 end

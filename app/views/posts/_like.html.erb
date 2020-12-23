@@ -1,0 +1,7 @@
+<%= form_for(current_user.favorite_relationships.build) do |f| %>
+<div><%= hidden_field_tag :post_id, post.id %></div>
+<%= button_tag(class: "btn btn-default" ) do %>
+<i class="far fa-heart"></i>
+<%= content_tag :span, post.liked_by.count %>
+<% end %>
+<% end %>

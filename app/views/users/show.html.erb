@@ -29,7 +29,7 @@
         <ol class="posts">
             <%= render @posts %>
         </ol>
-        <%= will_paginate @posts %>
+        <%= paginate @posts, theme: 'twitter-bootstrap-4'%>
         <% end %>
     </div>
 </div>

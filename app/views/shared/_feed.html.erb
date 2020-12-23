@@ -1,7 +1,6 @@
 <% if @feed_items.any? %>
-  <ol class="posts">
+<ol class="posts">
     <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items,
-                    params: { controller: :home, action: :top } %>
+</ol>
+<%= paginate @feed_items ,theme: 'twitter-bootstrap-4'%>
 <% end %>

@@ -1,17 +1,21 @@
 <h1>投稿詳細ページ</h1>
-<h3><%= @post.fish%></h3>
-<h3><%= @post.place%></h3>
-<h3><%= @post.content%></h3>
+<li><%= @post.fish%></li>
+<li><%= @post.place%></li>
+<li><%= @post.content%></li>
 
 <h2>コメント一覧</h2>
-<% @post.comments.each do |c| %>
-<div>
-    <%= c.content %>
-</div>
+<% @post.comments.each do |comment| %>
+<li>
+    <%= comment.content %>
+    <%= link_to "削除", post_comment_path(@post, comment), method: :delete,
+                                       data: { confirm: "本当に削除しますか？" } %>
+    <hr>
+</li>
 <% end %>
 
-<%= form_for [@post, @comment] do |f| %>
-<%= f.text_field :content %>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+コメントを書く
+<br><%= f.text_field :content %>
 <br>
 <%= f.submit 'コメントする' %>
 <% end %>

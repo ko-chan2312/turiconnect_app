@@ -2,12 +2,14 @@
 
 <ol class="posts">
     <% @post.each do |post|%>
-    <li id="post-<%= post.id %>">
-        <span class="user"><%= link_to post.user.name, post.user %></span>
-        <span class="fish"><%= post.fish%></span>
-        <span class="place"><%= post.place%></span>
-        <span class="content"><%= post.content%></span>
+    <li>
+        <span class="user">ユーザー名：<%= link_to post.user.name, post.user %></span>
+        <span class="fish">魚種：<%= post.fish%></span>
+        <span class="place">釣り場：<%= post.place%></span>
+        <span class="content">ひとこと：<%= post.content%>
+            <%= image_tag post.display_image if post.image.attached? %>
+        </span>
         <%= link_to '詳細をみる',  post_path(post) %>
-        <% end %>
     </li>
+    <% end %>
 </ol>

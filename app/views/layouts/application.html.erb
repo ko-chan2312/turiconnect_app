@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
-  </head>
-  <body>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
     <%= render 'layouts/header' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="container">
-      <%= yield %>
+        <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
     </div>
-  </body>
+</body>
+
 </html>
