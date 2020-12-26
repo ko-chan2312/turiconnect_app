@@ -9,7 +9,7 @@
         <%case notification.action%>
         <%when 'relationship' then%>
         <%= "あなたをフォローしました"%>
-        <%when 'like' then%>
+        <%when 'favorite_relationship' then%>
         <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;"%>
         <%= "にいいねしました"%>
         <%when 'comment' then%>
