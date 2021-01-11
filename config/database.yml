@@ -8,8 +8,8 @@ default: &default
   #timeout: 5000
   adapter: mysql2
   username: root
-  password:
-  host: 127.0.0.1
+  password: password
+  host: db
   encoding: utf8
 
 development:
@@ -29,6 +29,7 @@ test:
 production:
   <<: *default
   #database: db/production.sqlite3
+  host:     localhost
   database: turiconnect_app_production
   username: root
   password:
