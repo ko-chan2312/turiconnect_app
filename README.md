@@ -1,24 +1,23 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#釣りコネクト
+  釣りをやっていて、同じ魚を釣っている友達が欲しい、そんなあなた！
+  このアプリを使えば、釣果を投稿でき、同じ魚を釣っている人とフォローしあったり、dmを送ったりして友達になれます。
+  
+#使用技術
+　Ruby:2.6.3, Rails:6.0.3.3
+  nginx,unicorn
+  AWS(EC2,Route53)
+  Mysql(8.0.22)
+  
+ #機能一覧
+ ログイン機能(devise)
+ 画像アップロード機能(carrierwave)
+ ページネーション機能(kaminari)
+ 投稿機能
+ 投稿一覧表示機能
+ フォロー機能
+ いいね機能
+ コメント機能
+ DM機能
+ 通知機能(フォロー、いいね、コメント、通知)
+ 検索機能(ransack)
+ Facebookログイン機能
